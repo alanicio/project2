@@ -3,7 +3,7 @@
 @php
 	date_default_timezone_set('America/Mexico_City');
 	$hoy=new DateTime(date('Y-m-d'));
-	echo $hoy->format('d/m/Y').'<br>';
+	//echo $hoy->format('d/m/Y').'<br>';
 	//dd($hoy);
 @endphp
 	<table class="table">
@@ -25,12 +25,12 @@
 			                # code...
 			                break;
 
-			            case 'semana':
+			            case 'semana':			            	
 			                while($hoy>=$start)
 			                {
 			                	$start->add(new DateInterval('P7D'));
-			                }
-			                $diferencia=$hoy->diff($start);
+			                }			              
+			                $diferencia=$hoy->diff($start);		                
 			                break;
 
 			            case 'mes':				            	
