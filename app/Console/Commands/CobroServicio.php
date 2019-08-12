@@ -132,7 +132,8 @@ class CobroServicio extends Command
             {
                 // $fecha_cobro=new DateTime($diferencia->format('%d/%m/%Y'));
                 // $fecha_cobro->add(new DateInterval('P2D'));
-                Mail::to($servicio->cliente->correo)->send(new RecordatorioPago($servicio,$start));
+                Mail::to($servicio->cliente->correo)->send(new RecordatorioPago($servicio,$start,0));
+                 Mail::to('alejandra@sistemasnonex.com')->send(new RecordatorioPago($servicio,$start,1));
             }
         }
     }    

@@ -13,16 +13,18 @@ class RecordatorioPago extends Mailable
 
     public $servicio;
     public $fecha_pago;
+    public $destinatario;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($servicio,$fecha_pago)
+    public function __construct($servicio,$fecha_pago,$destinatario)
     {
         $this->servicio=$servicio;
         $this->fecha_pago=$fecha_pago;
+        $this->$destinatario=$destinatario;
     }
 
     /**
@@ -32,6 +34,13 @@ class RecordatorioPago extends Mailable
      */
     public function build()
     {
-        return $this->view('Mails.pago')->subject('¡Realiza tu pago a tiempo!');
+        if($this->destinatario)
+        {
+            return $this->view('Mails.pago')->subject('¡Realiza tu pago a tiempo!');
+        }
+        else
+        {
+            return $this->view('Mails.pago')->subject('¡Recuerda cobrar!');
+        }
     }
 }
