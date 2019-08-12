@@ -2,8 +2,8 @@
 @section('content')
 @php
 	date_default_timezone_set('America/Mexico_City');
-	$hoy=new DateTime(date('Y-m-d'));
-	//echo $hoy->format('d/m/Y').'<br>';
+	$hoy=new DateTime(date('Y-m-18'));
+	echo $hoy->format('d/m/Y').'<br>';
 	//dd($hoy);
 @endphp
 	<table class="table">
@@ -22,21 +22,25 @@
 					$start=new DateTime($servicio->fecha_inicial);
 					switch ($servicio->periodicidad) {
 			            case 'dia':
-			                # code...
+			                do
+			                {
+			                	$start->add(new DateInterval('P1D'));
+			                }while($hoy>=$start);	              
+			                $diferencia=$hoy->diff($start);		
 			                break;
 
-			            case 'semana':			            	
-			                while($hoy>=$start)
+			            case 'semana':	            	
+			                do
 			                {
 			                	$start->add(new DateInterval('P7D'));
-			                }			              
+			                }while($hoy>=$start);			              
 			                $diferencia=$hoy->diff($start);		                
 			                break;
 
 			            case 'mes':				            	
 			            	$oldDay = $start->format("d");
 		            		$i=0;		            	
-			                while($hoy>=$start)
+			                do
 			                {					                	
 			                	$start=new DateTime($servicio->fecha_inicial);
 			                	$i++;
@@ -45,14 +49,14 @@
 				                if($oldDay != $newDay && $newDay) {			
 								    $start->sub(new DateInterval("P" . $newDay . "D"));
 								}
-			                }
+			                }while($hoy>=$start);
 			            	$diferencia=$hoy->diff($start);
 			                break;
 
 			            case '3 meses':
 			                $oldDay = $start->format("d");
 		            		$i=0;		            	
-			                while($hoy>=$start)
+			                do
 			                {					                	
 			                	$start=new DateTime($servicio->fecha_inicial);
 			                	$i++;
@@ -61,14 +65,14 @@
 				                if($oldDay != $newDay && $newDay) {			
 								    $start->sub(new DateInterval("P" . $newDay . "D"));
 								}
-			                }
+			                }while($hoy>=$start);
 			            	$diferencia=$hoy->diff($start);
 			                break;
 
 			            case '6 meses':
 			                $oldDay = $start->format("d");
 		            		$i=0;		            	
-			                while($hoy>=$start)
+			                do
 			                {					                	
 			                	$start=new DateTime($servicio->fecha_inicial);
 			                	$i++;
@@ -77,14 +81,14 @@
 				                if($oldDay != $newDay && $newDay) {			
 								    $start->sub(new DateInterval("P" . $newDay . "D"));
 								}
-			                }
+			                }while($hoy>=$start);
 			            	$diferencia=$hoy->diff($start);
 			                break;
 
 			            case 'anual':
 			                $oldDay = $start->format("d");
 		            		$i=0;		            	
-			                while($hoy>=$start)
+			                do
 			                {					                	
 			                	$start=new DateTime($servicio->fecha_inicial);
 			                	$i++;
@@ -93,11 +97,10 @@
 				                if($oldDay != $newDay && $newDay) {			
 								    $start->sub(new DateInterval("P" . $newDay . "D"));
 								}
-			                }
+			                }while($hoy>=$start);
 			            	$diferencia=$hoy->diff($start);
 			                break;
-			        }
-			        $diferencia
+			        }			        
 				@endphp
 				<tr>
 					<td>{{$servicio->nombre}}</td>
