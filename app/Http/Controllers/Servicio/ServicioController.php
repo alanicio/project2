@@ -6,9 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Servicio;
 use App\Cliente;
+use Auth;
 
 class ServicioController extends Controller
 {
+    public function __construct() {
+        $this->middleware(function ($request, $next) {
+            if(Auth::check()) {
+                return $next($request); 
+            }
+            return redirect('/');           
+        });
+    }
     /**
      * Display a listing of the resource.
      *

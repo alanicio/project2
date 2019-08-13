@@ -5,9 +5,20 @@ namespace App\Http\Controllers\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Cliente;
+use Auth;
 
 class ClienteController extends Controller
 {
+
+     public function __construct() {
+        $this->middleware(function ($request, $next) {
+            if(Auth::check()) {
+                return $next($request); 
+            }
+            return redirect('/');           
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *

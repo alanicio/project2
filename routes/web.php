@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('start');
+    return view('auth.login');
+});
+Route::get('/home',function(){
+	return view('start');
 });
 
 Route::resource('clientes','Cliente\ClienteController');
@@ -21,3 +24,6 @@ Route::resource('servicios','Servicio\ServicioController');
 
 
 Route::get('example','ExampleController@example');
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
