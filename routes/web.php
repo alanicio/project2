@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('blueprint');
+    return view('start');
 });
 
 Route::resource('clientes','Cliente\ClienteController');

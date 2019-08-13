@@ -24,7 +24,7 @@ class RecordatorioPago extends Mailable
     {
         $this->servicio=$servicio;
         $this->fecha_pago=$fecha_pago;
-        $this->$destinatario=$destinatario;
+        $this->destinatario=$destinatario;
     }
 
     /**

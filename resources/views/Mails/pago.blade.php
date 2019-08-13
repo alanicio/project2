@@ -25,4 +25,4 @@ img {
 	@endif
 	
 </div>
-<div><img src="{{ $message->embed(public_path() . '/imgs/nonex_logo.png') }}"></div>
+<div><img src="{{ $message->embed(public_path() . '/imgs/nonex_logo.png') }}" style="margin-top: 5%;"></div>

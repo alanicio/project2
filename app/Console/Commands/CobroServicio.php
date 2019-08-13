@@ -44,7 +44,7 @@ class CobroServicio extends Command
     {
         $servicios=Servicio::get();
         date_default_timezone_set('America/Mexico_City');
-        $hoy=new DateTime(date('Y-m-18'));
+        $hoy=new DateTime(date('Y-m-d'));
         foreach ($servicios as $servicio) {
             $start=new DateTime($servicio->fecha_inicial);
             switch ($servicio->periodicidad) {
@@ -132,8 +132,8 @@ class CobroServicio extends Command
             {
                 // $fecha_cobro=new DateTime($diferencia->format('%d/%m/%Y'));
                 // $fecha_cobro->add(new DateInterval('P2D'));
-                Mail::to($servicio->cliente->correo)->send(new RecordatorioPago($servicio,$start,0));
-                 Mail::to('alejandra@sistemasnonex.com')->send(new RecordatorioPago($servicio,$start,1));
+                Mail::to($servicio->cliente->correo)->send(new RecordatorioPago($servicio,$start,1));
+                 Mail::to('administracion@sistemasnonex.com')->send(new RecordatorioPago($servicio,$start,0));
             }
         }
     }    

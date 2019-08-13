@@ -2,7 +2,7 @@
 @section('content')
 @php
 	date_default_timezone_set('America/Mexico_City');
-	$hoy=new DateTime(date('Y-m-18'));
+	$hoy=new DateTime(date('Y-m-d'));
 	echo $hoy->format('d/m/Y').'<br>';
 	//dd($hoy);
 @endphp
