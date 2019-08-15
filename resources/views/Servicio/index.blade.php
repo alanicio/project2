@@ -6,7 +6,7 @@
 	echo $hoy->format('d/m/Y').'<br>';
 	//dd($hoy);
 @endphp
-	<table class="table">
+	<table class="table table-bordered">
 		<thead>
 			<th>Servicio</th>
 			<th>Cliente</th>
@@ -15,6 +15,7 @@
 			<th>Duracion</th>
 			<th>Periodicidad de cobro</th>
 			<th>Dias hasta el proximo pago</th>
+			<th>Monto</th>
 		</thead>
 		<tbody>
 			@foreach($servicios as $servicio)
@@ -110,6 +111,7 @@
 					<td>{{$servicio->fecha_inicial->diff($servicio->fecha_final)->format('%y años, %m meses, %d días')}}</td>
 					<td>{{$servicio->periodicidad}}</td>
 					<td>{{$diferencia->m>0?$diferencia->format('%m meses y %d días'):$diferencia->format('%d días')}}</td>
+					<td>${{number_format($servicio->monto,2)}}</td>
 				</tr>
 			@endforeach
 		</tbody>

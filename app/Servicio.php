@@ -12,6 +12,7 @@ class Servicio extends Model
     	'cliente_id',
     	'fecha_inicial',
     	'fecha_final',
+        'monto',
     ];
 
     protected $dates=[

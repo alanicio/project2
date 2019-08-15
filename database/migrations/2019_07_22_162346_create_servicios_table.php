@@ -19,6 +19,7 @@ class CreateServiciosTable extends Migration
             $table->date('fecha_inicial');
             $table->date('fecha_final');
             $table->string('periodicidad');
+            $table->float('monto')->unsigned();
             $table->integer('cliente_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->timestamps();

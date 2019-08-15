@@ -26,7 +26,7 @@
         <label for="inputFfinal">Fecha final</label>
         <input type="date" class="form-control" id="inputFfinal" name="fecha_final">
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-4">
         <label for="inputDuracion">Duración del servicio</label>
         <input type="text" class="form-control" id="inputDuracion" readonly="">
       </div>
@@ -42,6 +42,21 @@
           <option value="6" style="display: none;">Anual</option>
         </select>
       </div>
+      <div class="form-group col-md-4">
+        <label for="inputMonto">Monto</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">$</div>
+          </div>
+          <input type="number" class="form-control" id="inputMonto" placeholder="$$$" name="monto">
+        </div>
+      </div>
+     <!--  <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <input type="text" class="form-control" id="inputMonto    " placeholder="Username">
+      </div> -->
     </div>
     <div class="form-group">
       <!-- <div class="form-check">
